@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -26,15 +26,12 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-
-      - name: Zip artifact for deployment
-        run: zip release.zip ./* -r
-
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: node-app
-          path: release.zip
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,20 +47,17 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: node-app
-
-      - name: Unzip artifact for deployment
-        run: unzip release.zip
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_411C1AD9A41D4685A34754922A545545 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_D0055A0DE5B04956BC5B5CF0A3E2CA3E }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_C75B40E32FBB4B388C89950293E0D75F }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8D3D58CE6BF541C1BDED529C45D82991 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_476B2AF6B95142B3A2C6CDDA39D0EF1C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AEFCA162C1B44110AB43B4B4C5A99293 }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
+        id: deploy-to-webapp
         with:
           app-name: 'Evoe'
           slot-name: 'Production'
