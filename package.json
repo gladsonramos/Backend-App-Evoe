@@ -5,7 +5,7 @@
   "main": "./src/app/index.js",
   "type": "module",
   "scripts": {
-    "test": "nodemon ./src/app/index.js",
+    "test": "mocha --recursive",
     "dev": "nodemon -w ./src/services -w ./src/database -w ./src/Repository ./src/app/index.js",
     "start": "nodemon ./src/app/index.js"
   },
@@ -16,8 +16,5 @@
     "express": "^4.19.2",
     "mongoose": "^8.3.0",
     "nodemon": "^3.1.0"
-  },
-  "devDependencies": {
-    "mocha": "^10.4.0"
   }
 }
