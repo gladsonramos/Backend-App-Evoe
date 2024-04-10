@@ -5,7 +5,6 @@
   "main": "./src/app/index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --recursive",
     "dev": "nodemon -w ./src/services -w ./src/database -w ./src/Repository ./src/app/index.js",
     "start": "nodemon ./src/app/index.js"
   },
