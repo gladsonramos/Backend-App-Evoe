@@ -1,4 +1,8 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/e5976aa4-38ca-44db-af19-abcd1804ba59/resourceGroups/Evoe_group/providers/Microsoft.Web/sites/Evoe",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
 }
